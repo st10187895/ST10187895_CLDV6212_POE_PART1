@@ -1,0 +1,168 @@
+﻿<style>
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 350px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 20px;
+        position: relative;
+    }
+
+    .title {
+        font-size: 28px;
+        color: royalblue;
+        font-weight: 600;
+        letter-spacing: -1px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding-left: 30px;
+    }
+
+        .title::before, .title::after {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            left: 0px;
+            background-color: royalblue;
+        }
+
+        .title::before {
+            width: 18px;
+            height: 18px;
+            background-color: royalblue;
+        }
+
+        .title::after {
+            width: 18px;
+            height: 18px;
+            animation: pulse 1s linear infinite;
+        }
+
+    .message, .signin {
+        color: rgba(88, 87, 87, 0.822);
+        font-size: 14px;
+    }
+
+    .signin {
+        text-align: center;
+    }
+
+        .signin a {
+            color: royalblue;
+        }
+
+            .signin a:hover {
+                text-decoration: underline royalblue;
+            }
+
+    .flex {
+        display: flex;
+        width: 100%;
+        gap: 6px;
+    }
+
+    .form label {
+        position: relative;
+    }
+
+        .form label .input {
+            width: 100%;
+            padding: 10px 10px 20px 10px;
+            outline: 0;
+            border: 1px solid rgba(105, 105, 105, 0.397);
+            border-radius: 10px;
+        }
+
+            .form label .input + span {
+                position: absolute;
+                left: 10px;
+                top: 15px;
+                color: grey;
+                font-size: 0.9em;
+                cursor: text;
+                transition: 0.3s ease;
+            }
+
+            .form label .input:placeholder-shown + span {
+                top: 15px;
+                font-size: 0.9em;
+            }
+
+            .form label .input:focus + span, .form label .input:valid + span {
+                top: 30px;
+                font-size: 0.7em;
+                font-weight: 600;
+            }
+
+            .form label .input:valid + span {
+                color: green;
+            }
+
+    .submit {
+        border: none;
+        outline: none;
+        background-color: royalblue;
+        padding: 10px;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 16px;
+        transform: .3s ease;
+    }
+
+        .submit:hover {
+            background-color: rgb(56, 90, 194);
+        }
+
+</style>
+
+
+<h1>Add Customer Profiler</h1>
+<p>Add/Create a customer Profile by populating the details below</p>
+<form class="form" asp-action="AddCustomerProfile" method="post">
+    <label>
+        <input class="input" type="text" name="FirstName" placeholder="First Name" />
+    </label>
+    <label>
+        <input class="input" type="text" name="LastName" placeholder="Last Name" />
+    </label>
+
+    <label>
+        <input class="input" type="email" name="Email" placeholder="Email" />
+    </label>
+
+    <label>
+        <input class="input" type="text" name="PhoneNumber" placeholder="Phone Number" />
+    </label>
+    <button class="submit" type="submit">Add Profile</button>
+</form>
+
+<h1>Add Product Image</h1>
+<p1>Add a product image below</p1>
+<form class="form" asp-action="UploadImage" method="post" enctype="multipart/form-data">
+    <label>
+        <input type="file" name="file" />
+        <button class="submit" type="submit">Upload Image</button>
+    </label>
+
+</form>
+
+<h1>Process Order</h1>
+<p>Enter the order ID below for an order you wish to be processed</p>
+<form class="form" asp-action="ProcessOrder" method="post">
+    <label>
+        <input class="input" type="text" name="orderId" placeholder="Order ID" />
+    </label>
+    <button class="submit" type="submit">Process Order</button>
+</form>
+
+<h1>Upload Contract</h1>
+<p>Upload a contract below</p>
+<form class="form" asp-action="UploadContract" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <button class="submit" type="submit">Upload Contract</button>
+</form>
