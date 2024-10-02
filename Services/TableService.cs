@@ -18,5 +18,25 @@ namespace ST10187895_CLDV6212_POE_PART1.Services
         {
             await _tableClient.AddEntityAsync(profile);
         }
+
+        private readonly HttpClient _httpClient;
+
+        public TableService(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
+
+        public async Task<string> AddEntityAsync()
+        {
+            var functionUrl = "https://st10187895cldv6212poe.azurewebsites.net/api/StoreTableInfo?code=cA8EUgobet_OAXAQY_68Iw5tH1sQIR0VeodIg0F0V_kUAzFuiWaYJA%3D%3D";
+            HttpResponseMessage response = await _httpClient.GetAsync(functionUrl);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadAsStringAsync();
+            }
+
+            throw new Exception("Failed to call Azure function.");
+        }
     }
 }
